@@ -1,0 +1,46 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.27.6",
+    "@chakra-ui/icon": "^3.2.0",
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^2.10.9",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "axios": "^1.11.0",
+    "core-js": "<3.23.3",
+    "framer-motion": "^12.23.12",
+    "gsap": "^3.13.0",
+    "product": "file:..",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-icon": "^1.0.0",
+    "react-icons": "^5.5.0",
+    "react-intersection-observer": "^9.16.0",
+    "react-router-dom": "^7.6.2",
+    "react-slick": "^0.30.3",
+    "recharts": "^3.1.0",
+    "slick-carousel": "^1.8.1",
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "vite": "^6.3.5"
+  }
+}

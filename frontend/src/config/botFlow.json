@@ -1,0 +1,61 @@
+{
+  "welcome": {
+    "bot": "👋 Welcome! I'm your assistant. What can I help you with?",
+    "options": ["Courses", "Support", "HR", "Start Onboarding", "About SSTPL", "Our Offerings", "Learners", "Institutions", "Testimonials", "Contact"]
+  },
+
+  "Courses": {
+    "bot": "📚 We offer Full Stack Development, UI/UX Design, and AI/ML courses. Want a recommendation?"
+  },
+
+  "Support": {
+    "bot": "🛠️ Let me know what you're facing trouble with — I'm here to help!"
+  },
+
+  "HR": {
+    "bot": "👩‍💼 HR Help: Need support with leave policies, onboarding, or other HR queries?"
+  },
+
+  "Start Onboarding": {
+    "bot": "🚀 Let's get you started! What's your full name?"
+  },
+
+  "About SSTPL": {
+    "bot": "🏢 SSTPL empowers people and organizations with smart, tech-enabled education. We layer intelligent platforms over learning and business processes to deliver real transformation."
+  },
+
+  "Our Offerings": {
+    "bot": "🎯 We offer SSTPL Assessments, AI-Driven Career Guidance, Digital Courses, and Live Bootcamps. Explore what fits your goals!"
+  },
+
+  "Learners": {
+    "bot": "🧑‍🎓 We help learners unlock their potential with hands-on training, career support, and expert-led programs designed for the real world."
+  },
+
+  "Institutions": {
+    "bot": "🏫 Partner institutions benefit from digital transformation, custom learning paths, and high-end educational tools powered by SSTPL."
+  },
+
+  "Testimonials": {
+    "bot": "💬 Hear it from our learners and clients! SSTPL has changed lives by offering practical, high-impact education that delivers results."
+  },
+
+  "Contact": {
+    "bot": "📞 You can reach us through the 'Contact Us' section on the website or drop an email at info@sstpltech.com."
+  },
+
+  "keywords": {
+    "about": "About SSTPL",
+    "sstpl": "About SSTPL",
+    "offerings": "Our Offerings",
+    "services": "Our Offerings",
+    "students": "Learners",
+    "learners": "Learners",
+    "institutes": "Institutions",
+    "colleges": "Institutions",
+    "testimonial": "Testimonials",
+    "feedback": "Testimonials",
+    "contact": "Contact",
+    "email": "Contact"
+  }
+}
