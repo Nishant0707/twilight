@@ -7,7 +7,7 @@ import {
   getJobById,
   updateJob,
   deleteJob,
-} from "../controllers/jobser.controller.js";
+} from "../controllers/Jobser.controller.js";
 
 const router = express.Router();
 
