@@ -1,4 +1,4 @@
-import Contact from "../models/contact.model.js";
+import Contact from "../models/Contact.model.js";
 
 // POST: create message or callback request
 export const createContact = async (req, res) => {
