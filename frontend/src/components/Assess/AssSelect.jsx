@@ -106,7 +106,7 @@ const AssSelect = () => {
         fontWeight="extrabold"
         mb={4}
       >
-        Choose Assessment Type
+         Learn About Assessment's
       </Heading>
       <Text fontSize="lg" textAlign="center" color="gray.600" mb={10}>
         Tap a category to learn more about each assessment.
