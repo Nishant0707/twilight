@@ -13,16 +13,80 @@ import {
   HStack,
 } from "@chakra-ui/react";
 
-const states = ["Maharashtra", "Delhi", "Karnataka", "Tamil Nadu", "Other"];
+const states = [
+  "Andhra Pradesh",
+  "Arunachal Pradesh",
+  "Assam",
+  "Bihar",
+  "Chhattisgarh",
+  "Goa",
+  "Gujarat",
+  "Haryana",
+  "Himachal Pradesh",
+  "Jharkhand",
+  "Karnataka",
+  "Kerala",
+  "Madhya Pradesh",
+  "Maharashtra",
+  "Manipur",
+  "Meghalaya",
+  "Mizoram",
+  "Nagaland",
+  "Odisha",
+  "Punjab",
+  "Rajasthan",
+  "Sikkim",
+  "Tamil Nadu",
+  "Telangana",
+  "Tripura",
+  "Uttar Pradesh",
+  "Uttarakhand",
+  "West Bengal",
+  "Andaman and Nicobar Islands",
+  "Chandigarh",
+  "Dadra and Nagar Haveli and Daman and Diu",
+  "Delhi",
+  "Jammu and Kashmir",
+  "Ladakh",
+  "Lakshadweep",
+  "Puducherry",
+  "Other"
+];
+
 const qualifications = [
   "High School Diploma",
   "Diploma",
+  "Certificate",
   "Associate Degree",
   "Bachelor's Degree",
+  "Bachelor of Arts (BA)",
+  "Bachelor of Science (BSc)",
+  "Bachelor of Commerce (BCom)",
+  "Bachelor of Business Administration (BBA)",
+  "Bachelor of Engineering (BEng)",
+  "Bachelor of Technology (BTech)",
+  "Bachelor of Computer Applications (BCA)",
+  "Bachelor of Fine Arts (BFA)",
+  "Bachelor of Laws (LLB)",
   "Master's Degree",
-  "PhD",
-  "Other",
+  "Master of Arts (MA)",
+  "Master of Science (MSc)",
+  "Master of Commerce (MCom)",
+  "Master of Business Administration (MBA)",
+  "Master of Technology (MTech)",
+  "Master of Engineering (MEng)",
+  "Master of Computer Applications (MCA)",
+  "Master of Social Work (MSW)",
+  "Master of Public Health (MPH)",
+  "Master of Education (MEd)",
+  "PhD / Doctorate",
+  "Doctor of Philosophy (PhD)",
+  "Doctor of Medicine (MD)",
+  "Doctor of Education (EdD)",
+  "Professional Qualification",
+  "Other"
 ];
+
 
 const Register = () => {
   const toast = useToast();
@@ -149,11 +213,6 @@ const Register = () => {
               <FormErrorMessage>{formErrors.qualification}</FormErrorMessage>
             </FormControl>
 
-            <FormControl flex={1} isRequired isInvalid={formErrors.otherQualification}>
-              <FormLabel>Other Qualification</FormLabel>
-              <Textarea placeholder="Specify if any other/Type Null" value={formData.otherQualification} onChange={handleChange("otherQualification")} />
-              <FormErrorMessage>{formErrors.otherQualification}</FormErrorMessage>
-            </FormControl>
           </HStack>
 
           <Button
