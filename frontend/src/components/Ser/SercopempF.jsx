@@ -6,78 +6,28 @@ import {
   FormLabel,
   Input,
   Textarea,
-  Checkbox,
   Button,
   Select,
   useToast,
-  HStack,
-  VStack,
   SimpleGrid,
-  InputGroup,
-  InputLeftAddon,
-  Image,
-  FormErrorMessage,  // <-- Add this line
+  FormErrorMessage,
 } from "@chakra-ui/react";
 
-const states = [
-  "Maharashtra",
+const cities = [
+  "Mumbai",
   "Delhi",
-  "Karnataka",
-  "Tamil Nadu",
+  "Bangalore",
+  "Chennai",
+  "Kolkata",
+  "Hyderabad",
+  "Pune",
+  "Ahmedabad",
+  "Surat",
+  "Jaipur",
   "Other",
 ];
 
-const SchedulesTestFields = ({
-  formData,
-  handleChange,
-  formErrors,
-}) => (
-  <>
-    <FormControl isRequired isInvalid={!!formErrors.testDate}>
-      <FormLabel>Test Date</FormLabel>
-      <Input
-        type="date"
-        name="testDate"
-        value={formData.testDate}
-        onChange={handleChange}
-      />
-      <FormErrorMessage>{formErrors.testDate}</FormErrorMessage>
-    </FormControl>
-
-    <FormControl isRequired isInvalid={!!formErrors.testTime}>
-      <FormLabel>Test Time</FormLabel>
-      <Input
-        type="time"
-        name="testTime"
-        value={formData.testTime}
-        onChange={handleChange}
-      />
-      <FormErrorMessage>{formErrors.testTime}</FormErrorMessage>
-    </FormControl>
-
-    <FormControl isRequired isInvalid={!!formErrors.testPlace}>
-      <FormLabel>Test Place</FormLabel>
-      <Input
-        name="testPlace"
-        value={formData.testPlace}
-        onChange={handleChange}
-      />
-      <FormErrorMessage>{formErrors.testPlace}</FormErrorMessage>
-    </FormControl>
-
-    <FormControl isRequired isInvalid={!!formErrors.testJobProfile}>
-      <FormLabel>Test Job Profile</FormLabel>
-      <Input
-        name="testJobProfile"
-        value={formData.testJobProfile}
-        onChange={handleChange}
-      />
-      <FormErrorMessage>{formErrors.testJobProfile}</FormErrorMessage>
-    </FormControl>
-  </>
-);
-
-export default function SercopempF() {
+export default function EmployerRegistration() {
   const toast = useToast();
 
   const [formData, setFormData] = useState({
@@ -88,23 +38,16 @@ export default function SercopempF() {
     jobProfile: "",
     jobDescription: "",
     officeLocation: "",
-    timePreferenceFrom: "",
-    timePreferenceTo: "",
     workMode: "",
-    schedulesTest: false,
-    testDate: "",
-    testTime: "",
-    testPlace: "",
-    testJobProfile: "",
   });
 
   const [formErrors, setFormErrors] = useState({});
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
   };
 
@@ -119,27 +62,17 @@ export default function SercopempF() {
       errors.companyName = "Company Name is required";
     if (!formData.email.trim() || !validateEmail(formData.email))
       errors.email = "Valid Email is required";
+    if (!formData.phone.trim())
+      errors.phone = "Phone number is required";
     if (!formData.jobProfile.trim())
       errors.jobProfile = "Job Profile is required";
     if (!formData.jobDescription.trim())
       errors.jobDescription = "Job Description is required";
     if (!formData.officeLocation.trim())
       errors.officeLocation = "Office Location is required";
-    if (
-      !formData.timePreferenceFrom.trim() ||
-      !formData.timePreferenceTo.trim() ||
-      !formData.workMode.trim()
-    )
-      errors.timePreference = "Complete Time Preference is required";
-    if (formData.schedulesTest) {
-      if (
-        !formData.testDate.trim() ||
-        !formData.testTime.trim() ||
-        !formData.testPlace.trim() ||
-        !formData.testJobProfile.trim()
-      )
-        errors.testSchedule = "All test schedule fields are required";
-    }
+    if (!formData.workMode.trim())
+      errors.workMode = "Work Mode is required";
+
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -155,7 +88,6 @@ export default function SercopempF() {
       });
       return;
     }
-    // TODO: API submission logic here
 
     toast({
       title: "Application submitted successfully!",
@@ -163,6 +95,8 @@ export default function SercopempF() {
       duration: 4000,
       isClosable: true,
     });
+
+    // TODO: Submit form data to API/backend
   };
 
   return (
@@ -245,34 +179,22 @@ export default function SercopempF() {
             <FormErrorMessage>{formErrors.jobDescription}</FormErrorMessage>
           </FormControl>
 
-          {/* Office Location */}
+          {/* Office Location as City Dropdown */}
           <FormControl isRequired isInvalid={!!formErrors.officeLocation}>
-            <FormLabel>Office Location</FormLabel>
-            <Input
+            <FormLabel>Office Location (City)</FormLabel>
+            <Select
               name="officeLocation"
+              placeholder="Select city"
               value={formData.officeLocation}
               onChange={handleChange}
-            />
+            >
+              {cities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </Select>
             <FormErrorMessage>{formErrors.officeLocation}</FormErrorMessage>
-          </FormControl>
-
-          {/* Time Preference */}
-          <FormControl isRequired>
-            <FormLabel>Time Preference</FormLabel>
-            <HStack spacing={4}>
-              <Input
-                type="time"
-                name="timePreferenceFrom"
-                value={formData.timePreferenceFrom}
-                onChange={handleChange}
-              />
-              <Input
-                type="time"
-                name="timePreferenceTo"
-                value={formData.timePreferenceTo}
-                onChange={handleChange}
-              />
-            </HStack>
           </FormControl>
 
           {/* Work Mode */}
@@ -292,65 +214,7 @@ export default function SercopempF() {
             <FormErrorMessage>{formErrors.workMode}</FormErrorMessage>
           </FormControl>
 
-          {/* Schedule test */}
-          <FormControl gridColumn="span 2">
-            <Checkbox
-              name="schedulesTest"
-              isChecked={formData.schedulesTest}
-              onChange={handleChange}
-            >
-              Schedule Online Test
-            </Checkbox>
-          </FormControl>
-
-          {/* Schedule test fields */}
-          {formData.schedulesTest && (
-            <>
-              <FormControl isRequired isInvalid={!!formErrors.testDate}>
-                <FormLabel>Test Date</FormLabel>
-                <Input
-                  type="date"
-                  name="testDate"
-                  value={formData.testDate}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage>{formErrors.testDate}</FormErrorMessage>
-              </FormControl>
-
-              <FormControl isRequired isInvalid={!!formErrors.testTime}>
-                <FormLabel>Test Time</FormLabel>
-                <Input
-                  type="time"
-                  name="testTime"
-                  value={formData.testTime}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage>{formErrors.testTime}</FormErrorMessage>
-              </FormControl>
-
-              <FormControl isRequired isInvalid={!!formErrors.testPlace}>
-                <FormLabel>Test Place</FormLabel>
-                <Input
-                  name="testPlace"
-                  value={formData.testPlace}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage>{formErrors.testPlace}</FormErrorMessage>
-              </FormControl>
-
-              <FormControl isRequired isInvalid={!!formErrors.testJobProfile}>
-                <FormLabel>Test Job Profile</FormLabel>
-                <Input
-                  name="testJobProfile"
-                  value={formData.testJobProfile}
-                  onChange={handleChange}
-                />
-                <FormErrorMessage>{formErrors.testJobProfile}</FormErrorMessage>
-              </FormControl>
-            </>
-          )}
-
-          {/* Submit */}
+          {/* Submit Button */}
           <Box gridColumn="span 2">
             <Button
               colorScheme="blue"
@@ -358,7 +222,7 @@ export default function SercopempF() {
               type="submit"
               borderRadius="xl"
               width="full"
-              mb={6}  // Add bottom margin here
+              mb={6}
             >
               Submit Application
             </Button>
