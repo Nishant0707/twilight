@@ -236,7 +236,7 @@ const Navbar = () => {
                       Student
                     </Text>
                     <MenuItem as={RouterLink} to="/jobdes">
-                      Jobs
+                      Vacancies
                     </MenuItem>
                   </Box>
                 </MenuList>
