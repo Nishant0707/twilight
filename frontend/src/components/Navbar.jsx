@@ -383,7 +383,7 @@ const Navbar = () => {
                         <Text fontWeight="bold" mt={2}>
                           Student
                         </Text>
-                        <Link {...navLinkStyle("/jobdes")}>Job Profile</Link>
+                        <Link {...navLinkStyle("/jobdes")}>Vacancies</Link>
                       </VStack>
                     </AccordionPanel>
                   </AccordionItem>
