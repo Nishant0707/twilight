@@ -172,7 +172,7 @@ const Navbar = () => {
                   gap={1}
                   _hover={{ borderBottom: "2px solid #3182ce" }}
                 >
-                  Services <ChevronDownIcon />
+                  Services
                 </MenuButton>
                 <MenuList
                   minW="500px"
@@ -191,7 +191,7 @@ const Navbar = () => {
                       bgGradient="linear(to-r, blue.500, purple.600)"
                       bgClip="text"
                     >
-                      Skill Development Initiatives
+                      Development Initiatives
                     </Text>
                     <MenuItem as={RouterLink} to="/government">
                       Government Scheme
@@ -257,7 +257,7 @@ const Navbar = () => {
                   gap={1}
                   _hover={{ borderBottom: "2px solid #3182ce" }}
                 >
-                  Quick Links <ChevronDownIcon />
+                  Quick Links
                 </MenuButton>
                 <MenuList minW="200px">
                   <MenuItem as={RouterLink} to="/testimonials">
@@ -284,7 +284,7 @@ const Navbar = () => {
                   gap={1}
                   _hover={{ borderBottom: "2px solid #3182ce" }}
                 >
-                  Login <ChevronDownIcon />
+                  Login
                 </MenuButton>
                 <MenuList minW="180px">
                   <MenuItem
