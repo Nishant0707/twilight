@@ -75,7 +75,7 @@ const AssSelect = () => {
     desc: 'Organized retail drives modern consumer experiences worldwide. This assessment focuses on customer service, sales, and management techniques. Candidates are tested on product handling, inventory, and merchandising strategies. Emphasis includes digital payment systems and e-commerce practices. This prepares individuals for careers in mall retail, franchises, and store management.' 
   },
   { 
-    title: 'Plumbing', 
+    title: 'Water Management & Plumbing', 
     desc: 'The plumbing sector ensures water management and sanitation infrastructure. Assessments evaluate practical skills in pipe installation, repair, and maintenance. Candidates are tested on safety, material use, and blueprint reading. The sector emphasizes both manual and machine-assisted operations. Careers here support housing, industrial, and public infrastructure projects.' 
   },
   { 
