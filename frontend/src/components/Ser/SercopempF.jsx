@@ -14,22 +14,12 @@ import {
 } from "@chakra-ui/react";
 
 const cities = [
-  "Mumbai",
-  "Delhi",
-  "Bangalore",
-  "Chennai",
-  "Kolkata",
-  "Hyderabad",
-  "Pune",
-  "Ahmedabad",
-  "Surat",
-  "Jaipur",
-  "Other",
+  "Mumbai", "Delhi", "Bangalore", "Chennai", "Kolkata",
+  "Hyderabad", "Pune", "Ahmedabad", "Surat", "Jaipur", "Other",
 ];
 
 export default function EmployerRegistration() {
   const toast = useToast();
-
   const [formData, setFormData] = useState({
     companyName: "",
     employerName: "",
@@ -40,22 +30,15 @@ export default function EmployerRegistration() {
     officeLocation: "",
     workMode: "",
   });
-
   const [formErrors, setFormErrors] = useState({});
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
-
   const validate = () => {
     let errors = {};
     if (!formData.companyName.trim())
@@ -72,11 +55,9 @@ export default function EmployerRegistration() {
       errors.officeLocation = "Office Location is required";
     if (!formData.workMode.trim())
       errors.workMode = "Work Mode is required";
-
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) {
@@ -88,52 +69,50 @@ export default function EmployerRegistration() {
       });
       return;
     }
-
     toast({
       title: "Application submitted successfully!",
       status: "success",
       duration: 4000,
       isClosable: true,
     });
-
     // TODO: Submit form data to API/backend
   };
 
   return (
-    <>
-      <Heading mb={8} textAlign="center" color="blue.600">
+    <Box
+      maxW={{ base: "100%", md: "700px" }}
+      mx="auto"
+      my={{ base: 4, md: 8 }}
+      px={{ base: 2, md: 4 }}
+    >
+      <Heading mb={8} textAlign="center" color="blue.600" fontSize={{ base: "xl", md: "2xl" }}>
         Employer Registration
       </Heading>
       <form onSubmit={handleSubmit}>
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
-          spacing={6}
-          maxW="700px"
-          mx="auto"
-          px={4}
+          spacing={4}
+          mb={4}
         >
-          {/* Company Name */}
           <FormControl isRequired isInvalid={!!formErrors.companyName}>
             <FormLabel>Company Name</FormLabel>
             <Input
               name="companyName"
               value={formData.companyName}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
             />
             <FormErrorMessage>{formErrors.companyName}</FormErrorMessage>
           </FormControl>
-
-          {/* Employer Name */}
           <FormControl>
             <FormLabel>Employer Name</FormLabel>
             <Input
               name="employerName"
               value={formData.employerName}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
             />
           </FormControl>
-
-          {/* Email */}
           <FormControl isRequired isInvalid={!!formErrors.email}>
             <FormLabel>Email</FormLabel>
             <Input
@@ -141,11 +120,10 @@ export default function EmployerRegistration() {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
             />
             <FormErrorMessage>{formErrors.email}</FormErrorMessage>
           </FormControl>
-
-          {/* Phone */}
           <FormControl isRequired isInvalid={!!formErrors.phone}>
             <FormLabel>Phone Number</FormLabel>
             <Input
@@ -153,33 +131,31 @@ export default function EmployerRegistration() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
             />
             <FormErrorMessage>{formErrors.phone}</FormErrorMessage>
           </FormControl>
-
-          {/* Job Profile */}
           <FormControl isRequired isInvalid={!!formErrors.jobProfile}>
             <FormLabel>Job Profile</FormLabel>
             <Input
               name="jobProfile"
               value={formData.jobProfile}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
             />
             <FormErrorMessage>{formErrors.jobProfile}</FormErrorMessage>
           </FormControl>
-
-          {/* Job Description */}
           <FormControl isRequired isInvalid={!!formErrors.jobDescription}>
             <FormLabel>Job Description</FormLabel>
             <Textarea
               name="jobDescription"
               value={formData.jobDescription}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
+              resize="vertical"
             />
             <FormErrorMessage>{formErrors.jobDescription}</FormErrorMessage>
           </FormControl>
-
-          {/* Office Location as City Dropdown */}
           <FormControl isRequired isInvalid={!!formErrors.officeLocation}>
             <FormLabel>Office Location (City)</FormLabel>
             <Select
@@ -187,17 +163,14 @@ export default function EmployerRegistration() {
               placeholder="Select city"
               value={formData.officeLocation}
               onChange={handleChange}
+              fontSize={{ base: "sm", md: "md" }}
             >
               {cities.map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
+                <option key={city} value={city}>{city}</option>
               ))}
             </Select>
             <FormErrorMessage>{formErrors.officeLocation}</FormErrorMessage>
           </FormControl>
-
-          {/* Work Mode */}
           <FormControl isRequired isInvalid={!!formErrors.workMode}>
             <FormLabel>Work Mode</FormLabel>
             <Select
@@ -205,6 +178,7 @@ export default function EmployerRegistration() {
               value={formData.workMode}
               onChange={handleChange}
               placeholder="Select work mode"
+              fontSize={{ base: "sm", md: "md" }}
             >
               <option value="full-time">Full-time</option>
               <option value="hybrid">Hybrid</option>
@@ -213,22 +187,22 @@ export default function EmployerRegistration() {
             </Select>
             <FormErrorMessage>{formErrors.workMode}</FormErrorMessage>
           </FormControl>
-
-          {/* Submit Button */}
-          <Box gridColumn="span 2">
+          {/* Submit Button: spans all columns on md+ screens, single column on mobile */}
+          <Box gridColumn={{ base: "1", md: "span 2" }}>
             <Button
               colorScheme="blue"
               size="lg"
               type="submit"
               borderRadius="xl"
               width="full"
-              mb={6}
+              fontSize={{ base: "md", md: "lg" }}
+              mb={{ base: 4, md: 6 }}
             >
               Submit Application
             </Button>
           </Box>
         </SimpleGrid>
       </form>
-    </>
+    </Box>
   );
 }
