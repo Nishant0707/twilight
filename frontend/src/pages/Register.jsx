@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -88,7 +88,6 @@ const qualifications = [
 
 const Register = () => {
   const toast = useToast();
-
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -97,13 +96,10 @@ const Register = () => {
     city: "",
     qualification: "",
   });
-
   const [formErrors, setFormErrors] = useState({});
-
   const handleChange = (field) => (e) => {
     setFormData((prev) => ({ ...prev, [field]: e.target.value }));
   };
-
   const validate = () => {
     const errors = {};
     if (!formData.fullName.trim()) errors.fullName = "Full Name is required";
@@ -117,7 +113,6 @@ const Register = () => {
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validate()) {
@@ -139,31 +134,34 @@ const Register = () => {
   };
 
   return (
-    <Box maxW="600px" mx="auto" my={8} px={4}>
-      <Heading mb={6} textAlign="center" color="blue.600">
+    <Box
+      maxW={{ base: "100%", md: "600px" }}
+      mx="auto"
+      my={{ base: 4, md: 8 }}
+      px={{ base: 2, md: 4 }}
+    >
+      <Heading mb={6} textAlign="center" color="blue.600" fontSize={{ base: "xl", md: "2xl" }}>
         Register & Schedule Test
       </Heading>
-
       <form onSubmit={handleSubmit}>
         <FormControl isRequired isInvalid={formErrors.fullName} mb={4}>
           <FormLabel>Full Name</FormLabel>
           <Input value={formData.fullName} onChange={handleChange("fullName")} />
           <FormErrorMessage>{formErrors.fullName}</FormErrorMessage>
         </FormControl>
-
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} mb={4}>
           <FormControl isRequired isInvalid={formErrors.email}>
             <FormLabel>Email</FormLabel>
             <Input type="email" value={formData.email} onChange={handleChange("email")} />
             <FormErrorMessage>{formErrors.email}</FormErrorMessage>
           </FormControl>
-
           <FormControl isRequired isInvalid={formErrors.phone}>
             <FormLabel>Phone Number</FormLabel>
             <Input maxLength={10} value={formData.phone} onChange={handleChange("phone")} />
             <FormErrorMessage>{formErrors.phone}</FormErrorMessage>
           </FormControl>
-
+        </SimpleGrid>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4} mb={4}>
           <FormControl isRequired isInvalid={formErrors.state}>
             <FormLabel>State</FormLabel>
             <Select placeholder="Select state" value={formData.state} onChange={handleChange("state")}>
@@ -171,15 +169,13 @@ const Register = () => {
             </Select>
             <FormErrorMessage>{formErrors.state}</FormErrorMessage>
           </FormControl>
-
           <FormControl isRequired isInvalid={formErrors.city}>
             <FormLabel>City</FormLabel>
             <Input value={formData.city} onChange={handleChange("city")} />
             <FormErrorMessage>{formErrors.city}</FormErrorMessage>
           </FormControl>
         </SimpleGrid>
-
-        <FormControl isRequired isInvalid={formErrors.qualification} mt={6} mb={6}>
+        <FormControl isRequired isInvalid={formErrors.qualification} mt={4} mb={6}>
           <FormLabel>Qualification</FormLabel>
           <Select
             placeholder="Select qualification"
@@ -190,8 +186,14 @@ const Register = () => {
           </Select>
           <FormErrorMessage>{formErrors.qualification}</FormErrorMessage>
         </FormControl>
-
-        <Button colorScheme="blue" size="lg" type="submit" borderRadius="xl" width="full">
+        <Button
+          colorScheme="blue"
+          size="lg"
+          type="submit"
+          borderRadius="xl"
+          width="full"
+          fontSize={{ base: "md", md: "lg" }}
+        >
           Submit and Schedule Test
         </Button>
       </form>
